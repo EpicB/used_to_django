@@ -1,0 +1,31 @@
+in the 'url.py' that is in the app you define the route of which you want to load the file in 
+
+after that in the 'view.py' file you do the following 
+def start(request):
+    return render(request,'index.html')
+
+you use the render method which takes the request and the file name 
+
+
+how does django find the file 
+
+in the setting.py file that is in the project folder 
+
+look for this line and change dir as follows
+
+in the DIRS list you add (BASE_DIR, 'the name of the folder') you can also add multiple folders
+ TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR,'folderName'], <<<< YOU CHANGE THE FOLLOWING 
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]

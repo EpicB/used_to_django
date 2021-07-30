@@ -1,0 +1,23 @@
+in the views.py file you can send data with the render method such as 
+
+def start(request):
+    context = {
+        'name':'Potato',
+        'location':'africa',
+        'sells':'shawrma'
+    }
+    return render(request,'index.html',context)
+
+you can also send it this way 
+
+def start(request):
+    name = 'hello'
+    return render(request,'index.html',{'name':name})
+
+
+in the html file you can access the variables using {{name}}
+
+<h1>POTATO POTATO !!! {{name}}<br>
+        i sell {{sells}}<br>
+        location {{location}}
+    </h1>
