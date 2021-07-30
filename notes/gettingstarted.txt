@@ -1,0 +1,28 @@
+django installation 
+
+you install django using pip 
+
+python3 -m pip install django
+
+
+to create a new project with django use the following command
+
+
+django-admin startproject "projectname"
+
+
+if you want to create a project that has a certain django version you can use
+
+virtualenvwrapper 
+
+mkvirtualenv
+
+deactivate
+
+workon "virtual env name"
+
+which creates a virtual enviorment that you can customise 
+
+anakonda is also an option 
+
+

@@ -1,0 +1,59 @@
+
+
+how to start the app 
+
+python3 manage.py startapp "name of the app"
+
+how to startup the django server 
+
+python3 manage.py runserver 
+
+
+how to configure the routing 
+
+once you create the app it generates a couple of files 
+
+first thing create a "urls.py" that is in the app folder 
+
+from django.urls import path
+from . import views
+
+urlpatterns = {
+    path('',views.index,name='index'),
+    path('downloads',views.potato,name='potato')
+}
+
+path function arguements
+
+1 the route empty '' means the home page 
+2 the function from the views file that returns the http request to render the html
+3 a variable idk what it is yet nor i used but its advised to give it the same value as the function
+name 
+
+make sure you type urlpatterns this way therefor it doesnt give an error 
+
+
+
+in the "views.py" you can define functions that returns the httprepsonse for the meant route
+
+from django.shortcuts import render
+from django.http import HttpResponse
+# Create your views here.
+def index(request):
+    return HttpResponse('<h1>Potato</h1>')
+def potato(request):
+    return HttpResponse('<h1>hahah you are in potato land</h1>')
+
+
+lastly for the project folder in the "url.py" file 
+
+in the urlpatterns list you can add a new path that is taken from the 'urls.py' file in the app
+folder 
+
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',include('myapp.urls')) most important line 
+]
