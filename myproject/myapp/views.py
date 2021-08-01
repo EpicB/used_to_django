@@ -15,3 +15,7 @@ def start(request):
 def counter(request):
     words = len(request.POST["words"].split(' '))
     return render(request,'counter.html',{'words': words})
+def static(request):
+    return render(request,'static.html')
+def static1(request):
+    return render(request,'static1.html')
