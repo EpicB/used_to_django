@@ -1,0 +1,40 @@
+you can render the form like normal in your html 
+
+how to handle a get request 
+
+
+in the html file
+
+<form method="GET" action="counter">
+        <textarea name = "words" rows="25" cols = "25"></textarea>
+        <input type = "submit" value = "submit">
+</form>
+
+in the 'urls.py' file dont forget to render the html file that you want the data to be sent to using
+the path() method
+
+in the 'views.py' file 
+def counter(request):
+    words = len(request.GET["words"].split(' '))
+    return render(request,'counter.html',{'words': words})
+
+how to handle a post request
+
+
+in the html file {% csrf_token %} django doesnt allow you to not protect your forms 
+from a csrf attack and this line of code should prevent it 
+
+    <form method="POST" action="counter">
+        {% csrf_token %}
+        <textarea name = "words" rows="25" cols = "25"></textarea>
+        <input type = "submit" value = "submit">
+    </form
+
+in the 'views.py' make sure in the request thing to put it as a post request
+
+in the 'urls.py' file dont forget to render the html file that you want the data to be sent to using
+the path() method
+
+def counter(request):
+    words = len(request.POST["words"].split(' '))
+    return render(request,'counter.html',{'words': words})

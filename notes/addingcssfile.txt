@@ -1,0 +1,42 @@
+in django you can use external css as follows 
+
+create a folder where the css is gonna be 
+
+usually its referred to by static 
+
+in the 'setting.py' that is in the project folder 
+
+import os 
+
+under static 
+
+write this line static here referes to the folder name that is seen by the root directory 
+the one that manage.py is in
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
+
+
+in the html file you can do the following 
+
+before you add the file you need to load it first 
+
+in the link you do the following 
+{% static 'style.css' %} 
+what this means is static is a word that tells django that is a static file input next 
+to it is the location of the file
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hey </h1>
+</body>
+</html>
