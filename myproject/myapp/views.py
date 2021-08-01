@@ -12,3 +12,6 @@ def start(request):
         'sells':'shawrma'
     }
     return render(request,'index.html',context)
+def counter(request):
+    words = len(request.POST["words"].split(' '))
+    return render(request,'counter.html',{'words': words})

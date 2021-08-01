@@ -11,5 +11,10 @@
         i sell {{sells}}<br>
         location {{location}}
     </h1>
+    <form method="POST" action="counter">
+        {% csrf_token %}
+        <textarea name = "words" rows="25" cols = "25"></textarea>
+        <input type = "submit" value = "submit">
+    </form>
 </body>
 </html>
