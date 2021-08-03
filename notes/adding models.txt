@@ -1,0 +1,80 @@
+in the models.py file in the app folder you can add models as a normal class such as 
+
+from django.db import models
+
+# Create your models here.
+
+class feature:
+    id : int
+    name:str
+    details:str
+
+when you add these models if you wanna use them in the views.py file to load them into the webpage
+
+you to import the class name 
+
+from .models import feature
+
+you can create classes of that model and you send it into the html page
+
+such as 
+def model(request):
+    feature1 = feature()
+    feature1.id = 1
+    feature1.name = "Yes"
+    feature1.details = "yay"
+
+    feature2 = feature()
+    feature2.id = 2
+    feature2.name = "Yes"
+    feature2.details = "yay"
+
+    feature3 = feature()
+    feature3.id = 3
+    feature3.name = "Yes"
+    feature3.details = "yay"
+
+    feature4 = feature()
+    feature4.id = 4
+    feature4.name = "Yes"
+    feature4.details = "yay"
+    features = [feature1,feature2,feature3,feature4]
+    return render(request,'modelsmaster.html',{"features":features})
+
+
+when dealing with a lot of data what you can do is use jinja2 for loops and if statements
+
+such as 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {% for feature in features %}
+        <p>id : {{feature.id}} <br> name : {{feature.name}} <br>details : {{features.details}} </p>
+        {% if feature.id|divisibleby:2  %}
+        <p>this id is even :D {{feature.id}}</p>
+        {% endif %}
+        
+    {% endfor %}
+
+
+</body>
+</html>
+
+there is a thing named filters the you use filters they are a normal function 
+
+@register.filter
+def modulo(num, val):
+    return num % val == 0
+
+there is a filter named divisibleby which takes 1 number as follows and returns true if that
+number is divisble by what you want it to be 
+
+
+if feature.id|divisibleby:2 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {% for feature in features %}
+        <p>id : {{feature.id}} <br> name : {{feature.name}} <br>details : {{features.details}} </p>
+        {% if feature.id|divisibleby:2  %}
+        <p>this id is even :D {{feature.id}}</p>
+        {% endif %}
+        
+    {% endfor %}
+
+
+</body>
+</html>

@@ -7,5 +7,6 @@ urlpatterns = {
     path('index',views.start,name="start"),
     path('counter',views.counter,name ="counters"),
     path('static',views.static,name="static"),
-    path('static1',views.static1,name="static1")
+    path('static1',views.static1,name="static1"),
+    path('model',views.model,name="model")
 }
