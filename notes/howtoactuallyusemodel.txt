@@ -1,0 +1,53 @@
+in "models.py" you use the modele and apply it to the class and 
+in the attributes you use models.CharField(max_length=100)
+to define that model
+
+
+from django.db import models
+
+# Create your models here.
+
+class feature(models.Model):
+    name = models.CharField(max_length=100)
+    details = models.CharField(max_length=500)
+
+in "settings.py" in the installed_apps include your app name
+
+'appname'
+
+now you migrate the changes to the manage.py file
+using this command
+
+python3 manage.py makemigrations 
+
+this will create the model 
+
+this is a 2 step method you need to migrate it intot he data base
+
+python3 manage.py migrate
+
+this needs to be done everytime you change the models.py file -- -- -- --
+
+in the 'admin.py' file you can now register your models as so 
+
+from django.contrib import admin
+from .models import feature
+# Register your models here.
+
+admin.site.register(feature) ---- most important line
+
+to create a super user 
+python3 manage.py createsuperuser
+
+
+in the admin panel you can insert data to the models 
+
+now in the views.py you can use the database as follows 
+
+def model(request):
+    features = feature.objects.all() -- most important line
+    return render(request,'modelsmaster.html',{"features":features})
+
+
+dont forget to import models 
+from . import models
