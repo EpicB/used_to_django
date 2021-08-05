@@ -1,34 +1,27 @@
-from django.shortcuts import render,redirect
+what you need to import in views and why
+
+from django.shortcuts import render,redirect 
+the render function to render a page 
+
+the redirect function to redirect a user to a certain page or the same page
+
 from django.http import HttpResponse
+useless returns an HttpResponse wooo
+
 from django.contrib.auth.models import User,auth
+the user Object that django provides with authentication to using import
+you can find it in the django admin panel
+
 from django.contrib import messages
+think of it as a session variable where it stores data that you can use to provide
+ a message to the user
+
 from .models import feature
-# Create your views here.
-def index(request):
-    return HttpResponse('<h1>Potato</h1>')
-def potato(request):
-    return HttpResponse('<h1>hahah you are in potato land</h1>')
-def start(request):
-    context = {
-        'name':'Potato',
-        'location':'africa',
-        'sells':'shawrma'
-    }
-    return render(request,'index.html',context)
-def counter(request):
-    words = len(request.POST["words"].split(' '))
-    return render(request,'counter.html',{'words': words})
-def static(request):
-    feature1 = feature()
-    feature1.id = 1
-    feature1.name = "Yes"
-    feature1.details = "yay"
-    return render(request,'static.html',{"feature1":feature1})
-def static1(request):
-    return render(request,'static1.html')
-def model(request):
-    features = feature.objects.all()
-    return render(request,'modelsmaster.html',{"features":features})
+
+the model which you have created 
+
+
+
 def register(request):
     if request.method == 'POST':
         username = request.POST["username"]
@@ -50,3 +43,16 @@ def register(request):
         else:
             messages.info(request,"the {} are not the same".format(password))
     return render(request,'register.html')
+
+
+User.objects.filter(email=email).exists() checks wheather or not such value exists in the 
+database returns true if yes false if not
+
+https://docs.djangoproject.com/en/3.2/topics/db/queries/ for more info
+
+messages.info(request,"a message") stores the message in the messages variable that can be used 
+in the html as follows
+
+ {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
