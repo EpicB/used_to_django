@@ -9,5 +9,7 @@ urlpatterns = [
     path('static',views.static,name="static"),
     path('static1',views.static1,name="static1"),
     path('model',views.model,name="model"),
-    path('register',views.register,name='register')
+    path('register',views.register,name='register'),
+    path('test',views.test,name="test")
+    
 ]

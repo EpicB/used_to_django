@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if name == "white" %}
+    <link rel="stylesheet" href="{% static 'dark.css' %}">
+    {% else %}
+    <link rel="stylesheet" href="{% static 'white.css' %}">
+    {% endif %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="test">
+    {% csrf_token %}
+    {% if name == "white" %}
+    <button  name="black">click me</button>
+    {% else %}
+    <button  name="white">click me</button>
+    {% endif %}
+    </form>
+</body>
+</html>

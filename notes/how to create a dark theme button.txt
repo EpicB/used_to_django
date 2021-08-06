@@ -1,0 +1,47 @@
+the view.py file you do the following 
+
+what request.POST does it rerturns an array that is full of whatever the website sended 
+
+such as the name of a button 
+
+you can use in keyword from python to check if a certain name was used
+
+def test(request):
+    if "white" in request.POST:
+        name = "white"
+        return render(request,'test.html',{"name":name})
+    elif "black" in request.POST: 
+        name = "black"
+        return render(request,'test.html',{"name":name})
+    else:
+        name = "white"
+        return render(request,'test.html',{"name":name})
+
+
+in the html the file should look as follows 
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if name == "white" %}
+    <link rel="stylesheet" href="{% static 'dark.css' %}">
+    {% else %}
+    <link rel="stylesheet" href="{% static 'white.css' %}">
+    {% endif %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="test">
+    {% csrf_token %}
+    {% if name == "white" %}
+    <button  name="black">click me</button>
+    {% else %}
+    <button  name="white">click me</button>
+    {% endif %}
+    </form>
+</body>
+</html>

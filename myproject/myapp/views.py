@@ -50,3 +50,14 @@ def register(request):
         else:
             messages.info(request,"the {} are not the same".format(password))
     return render(request,'register.html')
+def test(request):
+    
+    if "white" in request.POST:
+        name = "white"
+        return render(request,'test.html',{"name":name})
+    elif "black" in request.POST: 
+        name = "black"
+        return render(request,'test.html',{"name":name})
+    else:
+        name = "white"
+        return render(request,'test.html',{"name":name})
